@@ -1,0 +1,14 @@
+no-install-data.diff
+no-google-analytics.diff
+no-distribute_setup.diff
+disable-unstable-tests.diff
+python3.5-qualname.diff
+coverage4.1.diff
+python3.6-modulenotfounderror.diff
+docs-sys.path.diff
+sphinx-html_sidebars.diff
+sphinx-body-max-width.diff
+no-versioned-entry-point.diff
+sphinx-class-directives.diff
+python3-conf-py.diff
+2to3-fixups.diff

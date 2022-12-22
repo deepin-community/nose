@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+
+DESTDIR3 := $(CURDIR)/debian/python3-nose
+
+export PYBUILD_NAME = nose
+export PYBUILD_AFTER_BUILD = {interpreter} -m lib2to3 --write --nobackups --no-diffs {build_dir}
+export PYBUILD_BEFORE_TEST = cp -r {build_dir} {build_dir}.tests && \
+	cp -r functional_tests unit_tests setup.cfg {build_dir}.tests && \
+	cd {build_dir}.tests && \
+	patch unit_tests/test_issue_100.rst < unit_tests/test_issue_100.rst.py3.patch && \
+	{interpreter} -m lib2to3 --write --nobackups --no-diffs functional_tests unit_tests && \
+	find -name '*.rst' | xargs {interpreter} -m lib2to3 --doctests_only --write --nobackups --no-diffs
+export PYBUILD_AFTER_TEST = rm -rf {build_dir}.tests
+export PYBUILD_TEST_ARGS = cd {build_dir}.tests && {interpreter} -m nose -v --with-doctest
+
+BUILDDIR3 := $(shell pybuild --print build_dir --interpreter python3)
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+override_dh_auto_build:
+	dh_auto_build
+	PYTHONPATH=$(BUILDDIR3) python3 setup.py build_sphinx
+
+override_dh_auto_test:
+	dh_auto_test -- --system=custom
+
+override_dh_auto_install:
+	dh_auto_install
+	cd $(DESTDIR3)/usr/bin/ && mv nosetests nosetests3
+	sed -i -e 's,#!/usr/bin/python3.*,#!/usr/bin/python3,' $(DESTDIR3)/usr/bin/nosetests3
+
+override_dh_installman:
+	dh_installman -p python3-nose nosetests.1
+	cd $(DESTDIR3)/usr/share/man/man1 && mv nosetests.1 nosetests3.1
+
+override_dh_installdocs:
+	dh_installdocs -ppython-nose-doc --doc-main-package=python-nose-doc
+	dh_installdocs --remaining-packages

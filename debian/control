@@ -1,0 +1,42 @@
+Source: nose
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders:
+ Torsten Marek <shlomme@debian.org>,
+ Dmitry Shachnev <mitya57@debian.org>,
+ Brian May <bam@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ python3-all,
+ python3-coverage,
+ python3-lib2to3,
+ python3-setuptools,
+ python3-sphinx (>= 1.0.7+dfsg)
+Standards-Version: 4.5.0
+Homepage: https://nose.readthedocs.io/en/latest/
+Vcs-Git: https://salsa.debian.org/python-team/packages/nose.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/nose
+
+Package: python-nose-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}
+Description: documentation for discovery and running for Python's unittest
+ nose provides an alternate test discovery and running process for
+ unittest, one that is intended to mimic the behavior of py.test as
+ much as is reasonably possible without resorting to too much magic
+ .
+ This package provides the documentation for nose.
+
+Package: python3-nose
+Architecture: all
+Multi-Arch: foreign
+Depends: python3-pkg-resources, ${misc:Depends}, ${python3:Depends}
+Suggests: python-nose-doc
+Description: test discovery and running for Python3 unittest
+ nose provides an alternate test discovery and running process for Python3
+ unittest, one that is intended to mimic the behavior of py.test as
+ much as is reasonably possible without resorting to too much magic
