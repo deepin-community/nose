@@ -1,4 +1,6 @@
 .coverage
+.pybuild/
+__pycache__/
 build/
 cover/
 functional_tests/doc_tests/test_xunit_plugin/support/nosetests.xml

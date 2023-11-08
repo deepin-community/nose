@@ -1,3 +1,42 @@
+nose (1.3.7-11) unstable; urgency=medium
+
+  * Disable pybuild’s clean, it deletes test .egg-info directories.
+    Rely on debian/clean instead (closes: #1052802).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 30 Sep 2023 19:57:05 +0300
+
+nose (1.3.7-10) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Update standards version to 4.6.2, no changes needed.
+
+  [ Dmitry Shachnev ]
+  * Use sphinx-build command to build the docs (closes: #1042649).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 02 Aug 2023 15:33:52 +0300
+
+nose (1.3.7-9) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Michael R. Crusoe ]
+  * debian/patches/python3.11.diff: workaround removal of
+    inspect.getargspec() in Python 3.11 (was deprecated back in Python 3.0)
+    Closes: #1024235
+  * Standards-Version: 4.6.1 (routine-update)
+  * Reorder sequence of d/control fields by cme (routine-update)
+  * Testsuite: autopkgtest-pkg-python (routine-update)
+  * Rules-Requires-Root: no (routine-update)
+  * Remove field Testsuite on binary package python-nose-doc that duplicates
+    source.
+  * watch file standard 4 (routine-update)
+  * Update lintian override selector
+
+  [ Dmitry Shachnev ]
+  * Update tests to adapt for TestCase.__str__ change in Python 3.11.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 13 Dec 2022 15:29:35 +0300
+
 nose (1.3.7-8) unstable; urgency=medium
 
   [ Ondřej Nový ]

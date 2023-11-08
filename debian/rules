@@ -20,7 +20,7 @@ BUILDDIR3 := $(shell pybuild --print build_dir --interpreter python3)
 
 override_dh_auto_build:
 	dh_auto_build
-	PYTHONPATH=$(BUILDDIR3) python3 setup.py build_sphinx
+	PYTHONPATH=$(BUILDDIR3) sphinx-build doc build/sphinx/html
 
 override_dh_auto_test:
 	dh_auto_test -- --system=custom
@@ -37,3 +37,5 @@ override_dh_installman:
 override_dh_installdocs:
 	dh_installdocs -ppython-nose-doc --doc-main-package=python-nose-doc
 	dh_installdocs --remaining-packages
+
+override_dh_auto_clean:
