@@ -1,3 +1,13 @@
+nose (1.3.7-12) unstable; urgency=medium
+
+  * Team upload.
+  * Take the Fedora patch, but don't apply it (introduces a test regression).
+    Closes: #1055574.
+  * (Build-)depend on python3-zombie-imp.
+  * Fix more Python 3.12 deprecations.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Nov 2023 13:40:56 +0100
+
 nose (1.3.7-11) unstable; urgency=medium
 
   * Disable pybuild’s clean, it deletes test .egg-info directories.

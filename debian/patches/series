@@ -14,3 +14,5 @@ python3-conf-py.diff
 2to3-fixups.diff
 python3.11.diff
 python3.11-testcase-str.diff
+#python3.12.diff
+python3.12-unittest.diff
