@@ -1,0 +1,26 @@
+Index: b/nose/result.py
+===================================================================
+--- a/nose/result.py
++++ b/nose/result.py
+@@ -11,7 +11,7 @@ reporting.
+ import logging
+ try:
+     # 2.7+
+-    from unittest.runner import _TextTestResult
++    from unittest.runner import TextTestResult as _TextTestResult
+ except ImportError:
+     from unittest import _TextTestResult
+ from nose.config import Config
+Index: b/nose/config.py
+===================================================================
+--- a/nose/config.py
++++ b/nose/config.py
+@@ -78,7 +78,7 @@ class ConfiguredDefaultsOptionParser(obj
+         except AttributeError:
+             filename = '<???>'
+         try:
+-            cfg.readfp(fh)
++            cfg.read_file(fh)
+         except ConfigParser.Error, exc:
+             raise ConfigError("Error reading config file %r: %s" %
+                               (filename, str(exc)))
